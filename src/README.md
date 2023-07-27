@@ -68,20 +68,12 @@ vite的配置文件为 `vite.config.js`
 resources/layout 中全局引用下面的文件，
 ES6语法通过import引入。
 
-`resources/js/app.js` 中引入了[alpinejs](https://www.alpinejs.cn/), 提供了与 Vue 或 React 这类大型框架相近的响应式和声明式特性
+~~`resources/js/app.js` 中引入了[alpinejs](https://www.alpinejs.cn/), 提供了与 Vue 或 React 这类大型框架相近的响应式和声明式特性~~
 
 `resources/js/bootstrap.js` 中引入了 [axios](https://www.axios-http.cn/) 用来发送网络请求，就不在使用jquery的ajax啦
 
 `resources/css/app.css` 中通过 @tailwind 加载了[Tailwind](https://www.tailwindcss.cn/docs/installation) , 配置文件为 tailwind.config.js 
 
-
-----
-
-## 组件化
-blade 模板中用到的 x- 开头的标签是引用的 resources/views/components 文件夹中的同名文件。
-
-参考Blade模板组件，
-在为自己的应用程序编写组件时，会在 app/View/Components 目录和 resources/views/components 目录中自动发现组件，因此通常不需要进一步的组件注册。
 
 
 <br/>
