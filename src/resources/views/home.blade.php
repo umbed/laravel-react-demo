@@ -24,31 +24,6 @@
                         <div class="card-body">
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">用户名: {{ Auth::user()->name }}</li>
-
-                            @if(false)
-                                @if(isset($company))
-                                    <li class="list-group-item">单位: {{ $company->name }}</li>
-                                    <li class="list-group-item">邀请码: {{ $company->join_code }}</li>
-                                    
-                                    <li class="list-group-item">
-                                        <button type="button" class="btn btn-danger mb-2">退出公司</button>
-                                    </li>
-                            
-                                @else
-                                    <li class="list-group-item">
-                                        <div class="form-inline">
-                                            <input type="text" class="form-control mb-2 mr-sm-2" id="joinCode" placeholder="邀请码">
-                                            <button type="button" class="btn btn-primary mb-2">加入单位</button>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <div class="form-inline">
-                                            <input type="text" class="form-control mb-2 mr-sm-2" id="companyName" placeholder="单位名称">
-                                            <button type="button" class="btn btn-primary mb-2">创建单位</button>
-                                        </div>
-                                    </li>
-                                @endif
-                            @endif
                             </ul>
                         </div>
                     </div>

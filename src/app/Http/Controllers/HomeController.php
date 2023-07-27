@@ -19,15 +19,6 @@ class HomeController extends Controller
 
   public function show()
   {
-    $userId = Auth::id();
-
-    $company = DB::table('company', 'c')
-      ->leftJoin('company_member as cm', 'cm.company_id', '=', 'c.id')
-      ->where('cm.user_id', '=', $userId)
-      ->first();
-
-    return view('home', [
-      'company' => $company
-    ]);
+    return view('home');
   }
 }

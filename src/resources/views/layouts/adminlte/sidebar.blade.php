@@ -45,42 +45,6 @@
           </a>
         </li>
 
-        <li class="nav-item">
-          <a href="/devices" class="nav-link @if(isset($active) && $active == 'devices') active @endif ">
-            <i class="nav-icon fas fa-tablet-alt"></i>
-            <p>
-              设备管理
-            </p>
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a href="/work" class="nav-link @if(isset($active) && $active == 'work') active @endif ">
-            <i class="nav-icon fas fa-caret-down"></i>
-            <p>
-              作业信息
-            </p>
-          </a>
-        </li>
-
-        <!-- <li class="nav-item">
-          <a href="/map" class="nav-link @if(isset($active) && $active == 'map') active @endif ">
-            <i class="nav-icon fas fa-tablet-alt"></i>
-            <p>
-              实时监控
-            </p>
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a href="/map/route" class="nav-link @if(isset($active) && $active == 'route') active @endif ">
-            <i class="nav-icon fas fa-tablet-alt"></i>
-            <p>
-              轨迹回放
-            </p>
-          </a>
-        </li> -->
-
 
         <!-- <li class="nav-item menu-open">
           <a href="#" class="nav-link active">

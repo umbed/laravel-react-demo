@@ -41,20 +41,6 @@ Route::prefix('users')->controller(UserController::class)->group(function () {
     Route::post('/delete', 'delete');
 });
 
-// 设备管理
-Route::prefix('devices')->controller(DeviceController::class)->group(function () {
-    Route::get('/', 'show');
-    Route::get('/list', 'store');
-    Route::get('/more', 'more');
-});
-
-// 作业信息
-Route::prefix('work')->controller(WorkController::class)->group(function () {
-    Route::get('/', 'show');
-    Route::get('/list', 'list');
-});
-
-
 Route::prefix('test')->controller(TestController::class)->group(function () {
     Route::get('/token/create', 'tokenCreate');
     Route::get('/auth', 'testAuth');
