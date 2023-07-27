@@ -1,0 +1,55 @@
+version: '2'
+
+services:
+  myapp:
+    image: docker.io/bitnami/laravel:10
+    ports:
+      - '8000:8000'
+      # 5173端口是开发环境下用来编写前端页面需要开放的端口，
+      # 参考README.md文件的Blade模板说明，
+      # 正式环境build了前端资源，就不用开放5173端口
+      - '5173:5173'
+    environment:
+      - DB_HOST=mariadb
+      - DB_PORT=3306
+      - DB_DATABASE=sson
+      - DB_USERNAME=my_user
+      - DB_PASSWORD=my_password
+    volumes:
+      - './src:/app'
+      - './web:/web/app'
+    depends_on:
+      - mariadb
+    # 初次拉取仓库不包含vendor文件，需要安装扩展，
+    # 取消下面注释，执行docker compose up ，
+    # 安装完成后，再次注释掉，再执行docker compose up
+    # command: bash -c "composer install"
+  mariadb:
+    image: docker.io/bitnami/mariadb:10.6
+    environment:
+      # ALLOW_EMPTY_PASSWORD is recommended only for development.
+      # 不允许root用户无密码登录
+      # - ALLOW_EMPTY_PASSWORD=yes
+      - MARIADB_ROOT_PASSWORD=qpalzm10@root.123
+      - MARIADB_USER=my_user
+      - MARIADB_DATABASE=sson
+      - MARIADB_PASSWORD=my_password
+      # 时区设置，mysql默认是使用系统时区，从UTC更改成国内时区
+      - TZ=Asia/Shanghai
+    volumes:
+      - mariadb-data-volume:/bitnami
+  # 本地用来管理mysql的,不用的话可以删除
+  phpmyadmin:
+    image: phpmyadmin:5.2.1
+    # restart: always
+    ports:
+      - 8080:80
+    environment:
+      # 任意服务器
+      - PMA_ARBITRARY=1
+      # 指定域名,端口
+      - PMA_HOST=mariadb
+      - PMA_PORT=3306
+
+volumes:
+  mariadb-data-volume:
