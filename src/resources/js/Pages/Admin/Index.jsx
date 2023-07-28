@@ -13,10 +13,10 @@ import { Layout, Menu, Button, theme, Dropdown, Space } from 'antd';
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { Link as I_Link } from "@inertiajs/react";
 import Logo from "@/Components/Logo"
-import Logout from '@/Components/Logout';
-// import Home from "./view/Home"
-// import About from "./view/About.jsx"
+import Home from "./Home/Home"
+import About from "./About/About"
 
 const { Header, Sider, Content } = Layout;
 
@@ -37,8 +37,8 @@ const menuItems = [
 function View() {
   return (
     <Routes>
-      <Route path="/dashboard" element={"home"} />
-      <Route path="/about" element={"about"} />
+      <Route path="/dashboard" element={<Home />} />
+      <Route path="/about" element={<About />} />
     </Routes>
   )
 }
@@ -55,7 +55,7 @@ const dropdownItems = [
   {
     key: '2',
     danger: true,
-    label: (<Logout />),
+    label: (<I_Link method="post" href={route('logout')} as="button"> 退出</I_Link>),
   },
 ];
 
@@ -89,12 +89,10 @@ export default function Dashboard({ auth }) {
               style={{ fontSize: '16px', width: 64, height: 64, }}
             />
 
-            <Dropdown
-              menu={{ items: dropdownItems, }}
-            >
-              <a onClick={(e) => e.preventDefault()}>
+            <Dropdown menu={{ items: dropdownItems, }} trigger={['click']}>
+              <a onClick={(e) => e.preventDefault()} style={{ position: "absolute", right: 10 }}>
                 <Space>
-                  Click
+                  {auth.user.name}
                   <DownOutlined />
                 </Space>
               </a>

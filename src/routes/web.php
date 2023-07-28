@@ -17,18 +17,20 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+    // return Inertia::render('Welcome');
+    return redirect('login');
 });
 
 Route::get('/dashboard', function () {
     // return Inertia::render('Dashboard');
     return Inertia::render('Admin/Index');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+//单页应用访问不存在的路由时返回主页
+Route::fallback(function () {
+    return Inertia::render('Admin/Index');
+    // return redirect('dashboard');
+})->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -37,8 +39,3 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
-
-
-Route::fallback(function () {
-    return Inertia::render('Admin/Index');
-});
