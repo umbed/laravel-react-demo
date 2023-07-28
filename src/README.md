@@ -66,8 +66,6 @@ vite的配置文件为 `vite.config.js`
 resources/layout 中全局引用下面的文件，
 ES6语法通过import引入。
 
-~~`resources/js/app.js` 中引入了[alpinejs](https://www.alpinejs.cn/), 提供了与 Vue 或 React 这类大型框架相近的响应式和声明式特性~~
-
 `resources/js/bootstrap.js` 中引入了 [axios](https://www.axios-http.cn/) 用来发送网络请求，就不在使用jquery的ajax啦
 
 `resources/css/app.css` 中通过 @tailwind 加载了[Tailwind](https://www.tailwindcss.cn/docs/installation) , 配置文件为 tailwind.config.js 
